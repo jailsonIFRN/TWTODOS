@@ -1,9 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-# Create your views here.
+from .models import Todo
 
-
-# serve para redenrisa o template
-def home(request):
-    return render(request, "todos/home.html")
+def todo_list(request):
+    todos = Todo.objects.all()
+    return render(request, "todos/todo_list.html", {"todos": todos})
